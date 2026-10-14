@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration JPA : déclaration de l'espace de noms et de la version 2.2 -->
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+
+<persistence-unit name="SallePU" transaction-type="RESOURCE_LOCAL">
+
+    <!-- Définir Hibernate comme fournisseur de persistance JPA -->
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <!-- Déclarer les classes entités utilisées dans le projet -->
+    <class>com.example.model.Salle</class>
+    <class>com.example.model.Reservation</class>
+
+    <properties>
+        <!-- Définir le pilote JDBC de la base de données H2 -->
+        <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+
+        <!-- Définir l'URL de connexion à la base H2 en mémoire -->
+        <property name="javax.persistence.jdbc.url"
+                  value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+
+        <!-- Définir le nom d'utilisateur de la base de données -->
+        <property name="javax.persistence.jdbc.user" value="sa"/>
+
+        <!-- Définir le mot de passe (vide dans cet exemple) -->
+        <property name="javax.persistence.jdbc.password" value=""/>
+
+        <!-- Spécifier le dialecte Hibernate adapté à la base H2 -->
+        <property name="hibernate.dialect"
+                  value="org.hibernate.dialect.H2Dialect"/>
+
+        <!-- Mettre à jour automatiquement le schéma de la base de données -->
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+        <!-- Afficher les requêtes SQL dans la console -->
+        <property name="hibernate.show_sql" value="true"/>
+
+        <!-- Formater les requêtes SQL pour faciliter leur lecture -->
+        <property name="hibernate.format_sql" value="true"/>
+    </properties>
+
+</persistence-unit>
+
+</persistence>
